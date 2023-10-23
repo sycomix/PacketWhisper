@@ -84,20 +84,18 @@ gCommonFQDNCipherFiles.sort()
 
 gRandomSubdomainFQDNCipherFiles  = []
 for root, dirs, files in os.walk( gFilepathRandomizedSubdomainFQDN ):
-	for file in files:
-		if '.' not in file:
-			gRandomSubdomainFQDNCipherFiles.append( file )
-
+	gRandomSubdomainFQDNCipherFiles.extend(
+		file for file in files if '.' not in file
+	)
 gRandomSubdomainFQDNCipherFiles.sort()
 
 # Load list of FQDN Subdomain Randomizer scripts
 
 gSubdomainRandomizerScripts = []
 for root, dirs, files in os.walk( gFilepathRandomizedSubdomainFQDN ):
-	for file in files:
-		if file.endswith('.py'):
-			gSubdomainRandomizerScripts.append( file )
-
+	gSubdomainRandomizerScripts.extend(
+		file for file in files if file.endswith('.py')
+	)
 gSubdomainRandomizerScripts.sort()
 
 
